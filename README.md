@@ -49,25 +49,6 @@ This mirrors how real internal research tools operate: **research first, interac
 
 ---
 
-## System Architecture
-
-User
-├── Phase 1: Research Request
-│ ├── LangGraph Research Planner
-│ ├── Document Retrieval
-│ ├── Summarization & Synthesis
-│ ├── Storage (S3 / MinIO)
-│ └── Indexing (Postgres + pgvector)
-│
-└── Phase 2: Interactive Q&A
-├── Query Understanding
-├── Retrieval from Knowledge Base
-├── Contextual Answer Generation
-└── Source-grounded Responses
-
-
----
-
 ## Core Components
 
 ### Orchestration
@@ -78,7 +59,7 @@ User
 - **PostgreSQL** — primary metadata store
 - **pgvector** — embedding storage and semantic search
 - **Redis** — caching, session state, intermediate results
-- **S3 / MinIO** — raw document and artifact storage
+- **MinIO** — raw document and artifact storage
 
 ### Models
 - LLMs used for:
@@ -86,8 +67,6 @@ User
   - Planning
   - Summarization
   - Answer synthesis
-
-(Model providers are abstracted behind interfaces.)
 
 ### API & Product
 - **FastAPI** backend (async, streaming-ready)
